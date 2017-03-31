@@ -23,4 +23,11 @@ public class ClientTest {
     assertTrue(client instanceof Client);
   }
 
+  @Test
+  public void getters_returnsCorrectly_true() {
+    Client client = new Client("Billi", 1);
+    assertEquals("Billi", client.getName());
+    assertEquals(1, client.getStylistId());
+  }
+
 }
