@@ -12,7 +12,7 @@ public class ClientTest {
   @After
   public void tearDown() {
     try (Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM name_of_your_table *;";
+      String sql = "DELETE FROM clients *;";
       con.createQuery(sql).executeUpdate();
     }
   }
