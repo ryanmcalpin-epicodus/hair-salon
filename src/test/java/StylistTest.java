@@ -37,4 +37,13 @@ public class StylistTest {
     assertTrue(Stylist.all().get(0).equals(sty));
   }
 
+  @Test
+  public void find_returnsInstanceById_sty2() {
+    Stylist sty1 = new Stylist("Ryan", "Monday, Friday");
+    sty1.save();
+    Stylist sty2 = new Stylist("Roberta", "Tuesday, Wednesday, Thursday");
+    sty2.save();
+    assertEquals(sty2, Stylist.find(sty2.getId()));
+  }
+
 }
