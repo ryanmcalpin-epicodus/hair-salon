@@ -60,6 +60,9 @@ public class App {
 
       if (workDays.equals("")) {
         newStylist.updateShifts("This stylist has no shifts. <a href='/stylists/" + newStylist.getId() + "/update'>ADD SHIFTS</a>");
+      } else {
+        workDays += "<br><a href='/stylists/" + newStylist.getId() + "/update'>EDIT SHIFTS</a>";
+        newStylist.updateShifts(workDays);
       }
 
       model.put("stylists", Stylist.all());
@@ -110,6 +113,8 @@ public class App {
       }
       if (workDays.equals("")) {
         workDays = "This stylist has no shifts. <a href='/stylists/" + stylist.getId() + "/update'>ADD SHIFTS</a>";
+      } else {
+        workDays += "<br><a href='/stylists/" + stylist.getId() + "/update'>EDIT SHIFTS</a>";
       }
       stylist.updateShifts(workDays);
       stylist = Stylist.find(stylist.getId());
