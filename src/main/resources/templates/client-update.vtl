@@ -2,7 +2,7 @@
 <form action="/clients/$client.getId()" method="post">
 
   #foreach ($stylist in $stylists)
-    <input type="radio" name="stylist" value="$stylist.getId()">$stylist.getName()<br>
+    <input type="radio" name="stylist" value="$stylist.getId()" checked>$stylist.getName()<br>
   #end
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
