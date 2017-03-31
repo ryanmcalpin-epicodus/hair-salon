@@ -1,0 +1,8 @@
+#if ($clients.size() > 0)
+<h3>Clients</h3>
+  #foreach ($client in $clients)
+    <p><a href="/stylists/$client.getStylistId()/clients/$client.getId()">$client.getName()</a></p>
+  #end
+#else
+  <p>No clients.</p>
+#end

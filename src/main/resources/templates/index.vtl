@@ -1,1 +1,6 @@
-<a href="/stylists">VIEW STYLISTS</a><br>
+#if ($stylists.size() > 0)
+<h3>Stylists</h3>
+  #foreach ($stylist in $stylists)
+    <p><a href="/stylists/$stylist.getId()">$stylist.getName()</a></p>
+  #end
+#end

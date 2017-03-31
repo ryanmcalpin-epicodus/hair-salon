@@ -9,4 +9,6 @@ $stylist.getWorkDays()
   #foreach ($client in $clients)
     <p><a href="/stylists/$stylist.getId()/clients/$client.getId()">$client.getName()</a></p>
   #end
+#else
+  <p>No clients.</p>
 #end
