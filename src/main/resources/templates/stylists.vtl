@@ -1,5 +1,7 @@
+<a href="/stylists/new">ADD NEW HIRE</a>
+<h3>Stylists</h3>
 #if ($stylists.size() > 0)
-  *list stylists
-#else
-  <a href="/stylists/new">ADD NEW HIRE</a>
+  #foreach ($stylist in $stylists)
+    <p><a href="/stylists/$stylist.getId()">$stylist.getName()</a></p>
+  #end
 #end
