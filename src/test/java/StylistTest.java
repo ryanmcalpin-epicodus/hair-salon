@@ -53,4 +53,13 @@ public class StylistTest {
     sty.updateShifts("Tuesday");
     assertEquals("Tuesday", Stylist.find(sty.getId()).getWorkDays());
   }
+
+  @Test
+  public void removeStylist_removesStylist_0() {
+    Stylist stylist = new Stylist("Ryan", "Monday Friday");
+    stylist.save();
+    assertTrue(Stylist.all().get(0).equals(stylist));
+    stylist.removeStylist();
+    assertEquals(0, Stylist.all().size());
+  }
 }

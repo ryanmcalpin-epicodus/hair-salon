@@ -183,5 +183,17 @@ public class App {
       model.put("template", "templates/stylist-client.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    get("/clients/:id/remove", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Client client = Client.find(Integer.parseInt(request.params("id")));
+      String clientName = client.getName();
+      client.removeClient();
+      model.put("client", clientName);
+      model.put("template", "templates/client-removed.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    
   }
 }
