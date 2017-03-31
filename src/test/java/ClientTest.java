@@ -37,4 +37,13 @@ public class ClientTest {
     assertTrue(Client.all().get(0).equals(client));
   }
 
+  @Test
+  public void find_returnsInstanceById_client2() {
+    Client client1 = new Client("Billi", 1);
+    client1.save();
+    Client client2 = new Client("Tommi", 3);
+    client2.save();
+    assertEquals(client2, Client.find(client2.getId()));
+  }
+
 }
