@@ -30,4 +30,11 @@ public class ClientTest {
     assertEquals(1, client.getStylistId());
   }
 
+  @Test
+  public void save_savesToDatabase_true() {
+    Client client = new Client("Billi", 1);
+    client.save();
+    assertTrue(Client.all().get(0).equals(client));
+  }
+
 }
