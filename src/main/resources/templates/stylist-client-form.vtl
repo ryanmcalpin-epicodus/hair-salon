@@ -1,0 +1,30 @@
+<form action="/stylists/$stylist.getId()/clients" method="post">
+  <div class="form-group">
+    <label for="name">Stylist's Name</label>
+    <input class="form-control" type="text" name="name" id="name" required>
+  </div>
+
+  <label>What days are they working?</label><br>
+  <input type="checkbox" id="monday" name="monday" value="Monday">
+  <label for="monday">Monday</label><br>
+
+  <input type="checkbox" id="tuesday" name="tuesday" value="Tuesday">
+  <label for="tuesday">Tuesday</label><br>
+
+  <input type="checkbox" id="wednesday" name="wednesday" value="Wednesday">
+  <label for="wednesday">Wednesday</label><br>
+
+  <input type="checkbox" id="thursday" name="thursday" value="Thursday">
+  <label for="thursday">Thursday</label><br>
+
+  <input type="checkbox" id="friday" name="friday" value="Friday">
+  <label for="friday">Friday</label><br>
+
+  <input type="checkbox" id="saturday" name="saturday" value="Saturday">
+  <label for="saturday">Saturday</label><br>
+
+  <input type="checkbox" id="sunday" name="sunday" value="Sunday">
+  <label for="sunday">Sunday</label><br>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

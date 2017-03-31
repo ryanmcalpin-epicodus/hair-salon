@@ -39,8 +39,10 @@ _This is the third Friday project for Epicodus's Java course. Users can add styl
 
 * Clone the repository
 * Navigate to the repository in the terminal
-* Open postgres and create run the command 'CREATE DATABASE hair\_salon;'
-* In the terminal, run the command 'pg\_dump hair\_salon > hair\_salon.sql;'
+* Run the command 'postgres'
+* In a new tab, run the command 'psql'
+* In psql, run the command 'CREATE DATABASE hair\_salon;'
+* In the terminal, run the command 'psql hair\_salon < hair\_salon.sql;'
 * Run the command 'gradle run'
 * Open browser and go to 'localhost:4567'
 
