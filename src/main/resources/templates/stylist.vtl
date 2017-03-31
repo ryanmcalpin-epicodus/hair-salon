@@ -3,7 +3,8 @@
 $stylist.getWorkDays()
 <br>
 
-<h4>Clients</h4><a href="/stylists/$stylist.getId()/clients/new">ADD CLIENT</a>
+<h4>Clients <a href="/stylists/$stylist.getId()/clients/new">ADD CLIENT</a></h4>
+
 #if ($clients.size() > 0)
   #foreach ($client in $clients)
     <p><a href="/stylists/$stylist.getId()/clients/$client.getId()">$client.getName()</a></p>
