@@ -17,4 +17,10 @@ public class ClientTest {
     }
   }
 
+  @Test
+  public void Client_instantiatesCorrectly_true() {
+    Client client = new Client("Billi", 1);
+    assertTrue(client instanceof Client);
+  }
+
 }
