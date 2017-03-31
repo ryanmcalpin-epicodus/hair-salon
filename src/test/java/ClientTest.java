@@ -57,4 +57,12 @@ public class ClientTest {
     assertFalse(Client.allPerStylist(1).contains(client2));
   }
 
+  @Test
+  public void updateStylist_assignsClientToNewStylist_true() {
+    Client client = new Client("Billi", 12, 1);
+    client.save();
+    client.updateStylist(2);
+    assertEquals(2, Client.find(client.getId()).getStylistId());
+  }
+
 }
