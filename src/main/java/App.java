@@ -55,14 +55,66 @@ public class App {
       if (request.queryParams("sunday") != null) {
         workDays += "Sunday ";
       }
-      if (workDays.equals("")) {
-        workDays = "This stylist has no shifts. <a href='/stylists/:id/update'>ADD SHIFTS</a>";
-      }
       Stylist newStylist = new Stylist(name, workDays);
       newStylist.save();
 
+      if (workDays.equals("")) {
+        newStylist.updateShifts("This stylist has no shifts. <a href='/stylists/" + newStylist.getId() + "/update'>ADD SHIFTS</a>");
+      }
+
       model.put("stylists", Stylist.all());
       model.put("template", "templates/stylists.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/stylists/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params("id")));
+      model.put("stylist", stylist);
+      model.put("template", "templates/stylist.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/stylists/:id/update", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params("id")));
+      model.put("stylist", stylist);
+      model.put("template", "templates/stylist-shifts-update.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    post("/stylists/:id", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params("id")));
+      String workDays = "";
+      if (request.queryParams("monday") != null) {
+        workDays += "Monday ";
+      }
+      if (request.queryParams("tuesday") != null) {
+        workDays += "Tuesday ";
+      }
+      if (request.queryParams("wednesday") != null) {
+        workDays += "Wednesday ";
+      }
+      if (request.queryParams("thursday") != null) {
+        workDays += "Thursday ";
+      }
+      if (request.queryParams("friday") != null) {
+        workDays += "Friday ";
+      }
+      if (request.queryParams("saturday") != null) {
+        workDays += "Saturday ";
+      }
+      if (request.queryParams("sunday") != null) {
+        workDays += "Sunday ";
+      }
+      if (workDays.equals("")) {
+        workDays = "This stylist has no shifts. <a href='/stylists/" + stylist.getId() + "/update'>ADD SHIFTS</a>";
+      }
+      stylist.updateShifts(workDays);
+      stylist = Stylist.find(stylist.getId());
+      model.put("stylist", stylist);
+      model.put("template", "templates/stylist.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 

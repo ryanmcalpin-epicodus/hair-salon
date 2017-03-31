@@ -64,4 +64,14 @@ public class Stylist {
     }
   }
 
+  public void updateShifts(String newDays) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "UPDATE stylists SET work_days = :days WHERE id = :id";
+      con.createQuery(sql)
+        .addParameter("days", newDays)
+        .addParameter("id", this.id)
+        .executeUpdate();
+    }
+  }
+
 }
