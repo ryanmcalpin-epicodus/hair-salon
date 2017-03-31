@@ -65,4 +65,13 @@ public class ClientTest {
     assertEquals(2, Client.find(client.getId()).getStylistId());
   }
 
+  @Test
+  public void removeClient_removesClient_0() {
+    Client client = new Client("Billi", 12, 1);
+    client.save();
+    assertTrue(Client.all().get(0).equals(client));
+    client.removeClient();
+    assertEquals(0, Client.all().size());
+  }
+
 }
