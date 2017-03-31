@@ -19,31 +19,42 @@ public class ClientTest {
 
   @Test
   public void Client_instantiatesCorrectly_true() {
-    Client client = new Client("Billi", 1);
+    Client client = new Client("Billi", 12, 1);
     assertTrue(client instanceof Client);
   }
 
   @Test
   public void getters_returnsCorrectly_true() {
-    Client client = new Client("Billi", 1);
+    Client client = new Client("Billi", 12, 1);
     assertEquals("Billi", client.getName());
+    assertEquals(12, client.getAge());
     assertEquals(1, client.getStylistId());
   }
 
   @Test
   public void save_savesToDatabase_true() {
-    Client client = new Client("Billi", 1);
+    Client client = new Client("Billi", 12, 1);
     client.save();
     assertTrue(Client.all().get(0).equals(client));
   }
 
   @Test
   public void find_returnsInstanceById_client2() {
-    Client client1 = new Client("Billi", 1);
+    Client client1 = new Client("Billi", 12, 1);
     client1.save();
-    Client client2 = new Client("Tommi", 3);
+    Client client2 = new Client("Tommi", 20, 3);
     client2.save();
     assertEquals(client2, Client.find(client2.getId()));
+  }
+
+  @Test
+  public void allPerStylist_returnsAllClientsByStylistId() {
+    Client client1 = new Client("Billi", 12, 1);
+    client1.save();
+    Client client2 = new Client("Tommi", 20, 3);
+    client2.save();
+    assertTrue(Client.allPerStylist(1).contains(client1));
+    assertFalse(Client.allPerStylist(1).contains(client2));
   }
 
 }

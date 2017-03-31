@@ -4,15 +4,21 @@ import java.util.List;
 public class Client {
   private int id;
   private String name;
+  private int age;
   private int stylistId;
 
-  public Client(String name, int stylistId) {
+  public Client(String name, int age, int stylistId) {
     this.name = name;
+    this.age = age;
     this.stylistId = stylistId;
   }
 
   public String getName() {
     return this.name;
+  }
+
+  public int getAge() {
+    return this.age;
   }
 
   public int getStylistId() {
@@ -61,6 +67,16 @@ public class Client {
         .addColumnMapping("stylist_id", "stylistId")
         .executeAndFetchFirst(Client.class);
       return client;
+    }
+  }
+
+  public static List<Client> allPerStylist(int stylistId) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM clients WHERE stylist_id = :id";
+      return con.createQuery(sql)
+        .addParameter("id", stylistId)
+        .addColumnMapping("stylist_id", "stylistId")
+        .executeAndFetch(Client.class);
     }
   }
 
