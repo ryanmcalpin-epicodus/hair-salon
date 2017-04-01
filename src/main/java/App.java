@@ -194,6 +194,19 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    
+    get("/stylists/:id/remove", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Stylist stylist = Stylist.find(Integer.parseInt(request.params("id")));
+      if (Client.allPerStylist(stylist.getId()).size() > 0) {
+        model.put("stylist", stylist);
+        model.put("template", "templates/stylist-remove-fail.vtl");
+      } else {
+        String stylistName = stylist.getName();
+        stylist.removeStylist();
+        model.put("stylist", stylistName);
+        model.put("template", "templates/stylist-removed.vtl");
+      }
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }

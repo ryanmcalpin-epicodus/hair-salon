@@ -10,9 +10,15 @@
   <body>
     <!-- begin inner template-->
     <div class="container">
-      <a href="/stylists">VIEW STYLISTS</a><br>
-      <a href="/clients">VIEW CLIENTS</a><br>
-      <a href="/stylists/new">ADD NEW HIRE</a><br>
+      <div class="jumbotron">
+        <h1>Hair Today, Gone Tomorrow</h1><br>
+        <p class="right">A salon seriously lacking in style.</p>
+        <ul class="nav">
+          <li><a href="/stylists">VIEW STYLISTS</a></li>
+          <li><a href="/clients">VIEW CLIENTS</a></li>
+          <li><a href="/stylists/new">ADD NEW HIRE</a></li>
+        </ul>
+      </div>
       #parse( $template )
     </div>
     <!-- end inner template-->
